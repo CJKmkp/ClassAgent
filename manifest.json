@@ -7,7 +7,7 @@
   "EntranceAssembly": "ClassAgent.dll",
   "Icon": "icon.png",
   "ApiVersion": "1.13.0",
-  "MinHostVersion": "1.13.0",
+  "MinHostVersion": "1.8.0",
   "Permissions": [
     "Network",
     "Canvas",
