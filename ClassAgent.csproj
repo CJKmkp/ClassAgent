@@ -15,8 +15,8 @@
 
   <PropertyGroup>
     <HostRepoRoot Condition="'$(HostRepoRoot)' == ''">..\ICC CE main\community</HostRepoRoot>
-    <PluginSdkPackageVersion Condition="'$(PluginSdkPackageVersion)' == ''">1.8.0-ge7c53b348f</PluginSdkPackageVersion>
-    <PluginControlsPackageVersion Condition="'$(PluginControlsPackageVersion)' == ''">1.7.19.9-g9d061df0fc</PluginControlsPackageVersion>
+    <PluginSdkPackageVersion Condition="'$(PluginSdkPackageVersion)' == ''">1.8.0.8-g90c1bad8f3</PluginSdkPackageVersion>
+    <PluginControlsPackageVersion Condition="'$(PluginControlsPackageVersion)' == ''">1.8.0.8-g90c1bad8f3</PluginControlsPackageVersion>
     <HasLocalHostSdk Condition="Exists('$(HostRepoRoot)\InkCanvas.PluginSdk\InkCanvas.PluginSdk.csproj')">true</HasLocalHostSdk>
   </PropertyGroup>
 
