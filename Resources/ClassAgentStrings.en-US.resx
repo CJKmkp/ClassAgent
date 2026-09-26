@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0</value></resheader>
+  <data name="Plugin_Name" xml:space="preserve"><value>ClassAgent</value></data>
+  <data name="Plugin_Description" xml:space="preserve"><value>Classroom AI assistant for explanations, annotations, and board writing</value></data>
+  <data name="Toolbar_Name" xml:space="preserve"><value>ClassAgent</value></data>
+  <data name="Toolbar_Description" xml:space="preserve"><value>Open the classroom AI assistant</value></data>
+  <data name="Window_Title" xml:space="preserve"><value>ClassAgent Classroom Assistant</value></data>
+  <data name="Window_InputPlaceholder" xml:space="preserve"><value>Ask a question, or read the screen</value></data>
+  <data name="Window_Send" xml:space="preserve"><value>Send</value></data>
+  <data name="Window_Stop" xml:space="preserve"><value>Stop</value></data>
+  <data name="Window_Clear" xml:space="preserve"><value>Clear</value></data>
+  <data name="Window_Capture" xml:space="preserve"><value>Read Screen</value></data>
+  <data name="Window_Explain" xml:space="preserve"><value>Explain</value></data>
+  <data name="Window_Annotate" xml:space="preserve"><value>Annotate</value></data>
+  <data name="Window_WriteInk" xml:space="preserve"><value>Write as Ink</value></data>
+  <data name="Window_Settings" xml:space="preserve"><value>Settings</value></data>
+  <data name="Window_Ready" xml:space="preserve"><value>Ready</value></data>
+  <data name="Window_Thinking" xml:space="preserve"><value>Thinking</value></data>
+  <data name="Window_Streaming" xml:space="preserve"><value>Generating</value></data>
+  <data name="Window_ConfirmTitle" xml:space="preserve"><value>Confirm Action</value></data>
+  <data name="Window_ConfirmAnnotation" xml:space="preserve"><value>ClassAgent will add {0} ink strokes to the canvas. Continue?</value></data>
+  <data name="Window_Inserted" xml:space="preserve"><value>Added to canvas</value></data>
+  <data name="Window_Failed" xml:space="preserve"><value>Operation failed: {0}</value></data>
+  <data name="Window_NoProvider" xml:space="preserve"><value>Configure a model provider in Settings first</value></data>
+  <data name="Settings_Title" xml:space="preserve"><value>ClassAgent Settings</value></data>
+  <data name="Settings_Provider" xml:space="preserve"><value>Model provider</value></data>
+  <data name="Settings_ProviderName" xml:space="preserve"><value>Provider name</value></data>
+  <data name="Settings_BaseUrl" xml:space="preserve"><value>Endpoint</value></data>
+  <data name="Settings_ApiKey" xml:space="preserve"><value>API key</value></data>
+  <data name="Settings_Model" xml:space="preserve"><value>Model</value></data>
+  <data name="Settings_FetchModels" xml:space="preserve"><value>Fetch models</value></data>
+  <data name="Settings_FetchingModels" xml:space="preserve"><value>Fetching available models…</value></data>
+  <data name="Settings_ModelsLoaded" xml:space="preserve"><value>Found {0} models. Select one or enter a name, then save.</value></data>
+  <data name="Settings_NoModels" xml:space="preserve"><value>This endpoint returned no models. You can still enter a model name manually.</value></data>
+  <data name="Settings_FetchFailed" xml:space="preserve"><value>Could not fetch models: {0}</value></data>
+  <data name="Settings_EnterBaseUrl" xml:space="preserve"><value>Enter the endpoint URL first.</value></data>
+  <data name="Settings_EnterApiKey" xml:space="preserve"><value>Enter an API key first.</value></data>
+  <data name="Settings_SystemPrompt" xml:space="preserve"><value>Classroom assistant prompt</value></data>
+  <data name="Settings_PromptGuide" xml:space="preserve"><value>Prompt guide</value></data>
+  <data name="Settings_PromptGuideDescription" xml:space="preserve"><value>Copyable classroom templates; {screen} means the current screen and {question} means the problem or question.</value></data>
+  <data name="Settings_PromptExplain" xml:space="preserve"><value>Explain a problem</value></data>
+  <data name="Settings_PromptAnnotate" xml:space="preserve"><value>Auto annotate</value></data>
+  <data name="Settings_PromptBoard" xml:space="preserve"><value>Board writing</value></data>
+  <data name="Settings_PromptTransfer" xml:space="preserve"><value>Move problem to board</value></data>
+  <data name="Settings_CopyPrompt" xml:space="preserve"><value>Copy template</value></data>
+  <data name="Settings_PromptExplainText" xml:space="preserve"><value>Read the problem in {screen}, restate the recognized conditions, then explain a clear and verifiable solution. If the content is unclear, identify the region that needs more detail.</value></data>
+  <data name="Settings_PromptAnnotateText" xml:space="preserve"><value>Read {screen}, identify the key steps to emphasize, and generate only a structured annotation plan (rectangle, arrow, underline, or highlight). Wait for confirmation before executing it.</value></data>
+  <data name="Settings_PromptBoardText" xml:space="preserve"><value>Turn {question} into a classroom board outline with a title, steps, formulas, and conclusion, then write it as real ink using SimSun.</value></data>
+  <data name="Settings_PromptTransferText" xml:space="preserve"><value>Capture the current problem and move it to a new whiteboard page as a scalable original image; do not overwrite existing board content first.</value></data>
+  <data name="Settings_ConfirmMode" xml:space="preserve"><value>Canvas change confirmation</value></data>
+  <data name="Settings_ConfirmAlways" xml:space="preserve"><value>Always ask</value></data>
+  <data name="Settings_ConfirmAuto" xml:space="preserve"><value>Run automatically</value></data>
+  <data name="Settings_Voice" xml:space="preserve"><value>Voice wake word</value></data>
+  <data name="Settings_WakeWord" xml:space="preserve"><value>Custom wake phrase</value></data>
+  <data name="Settings_EnableVoice" xml:space="preserve"><value>Enable Windows voice wake word</value></data>
+  <data name="Settings_Save" xml:space="preserve"><value>Save</value></data>
+  <data name="Settings_Test" xml:space="preserve"><value>Test connection</value></data>
+  <data name="Settings_Saved" xml:space="preserve"><value>Saved</value></data>
+  <data name="Floating_Open" xml:space="preserve"><value>Open ClassAgent</value></data>
+  <data name="Floating_Hide" xml:space="preserve"><value>Hide floating ball</value></data>
+  <data name="Floating_Voice" xml:space="preserve"><value>Voice wake word</value></data>
+  <data name="Floating_Tooltip" xml:space="preserve"><value>ClassAgent classroom assistant</value></data>
+  <data name="Tool_Pen" xml:space="preserve"><value>Pen</value></data>
+  <data name="Tool_Select" xml:space="preserve"><value>Select</value></data>
+  <data name="Tool_Eraser" xml:space="preserve"><value>Eraser</value></data>
+  <data name="Tool_Shape" xml:space="preserve"><value>Shape</value></data>
+  <data name="Tool_Roaming" xml:space="preserve"><value>Roaming</value></data>
+  <data name="Voice_Off" xml:space="preserve"><value>Voice is off</value></data>
+  <data name="Voice_Listening" xml:space="preserve"><value>Waiting for wake word</value></data>
+  <data name="Voice_Unavailable" xml:space="preserve"><value>Windows speech recognition is unavailable</value></data>
+  <data name="Window_ChatNav" xml:space="preserve"><value>Chat</value></data>
+  <data name="Window_HistoryNav" xml:space="preserve"><value>Chat history</value></data>
+  <data name="Window_HistoryEmpty" xml:space="preserve"><value>No chat history yet</value></data>
+  <data name="Window_ClearHistory" xml:space="preserve"><value>Clear history</value></data>
+  <data name="Window_ScreenNav" xml:space="preserve"><value>Screen &amp; annotate</value></data>
+  <data name="Window_BoardNav" xml:space="preserve"><value>Smart board</value></data>
+  <data name="Window_SettingsNav" xml:space="preserve"><value>Settings</value></data>
+  <data name="Window_ContextTitle" xml:space="preserve"><value>Classroom context</value></data>
+  <data name="Window_ScreenHint" xml:space="preserve"><value>Read the current screen and send it to the vision model for explanation or annotation.</value></data>
+  <data name="Window_BoardHint" xml:space="preserve"><value>Enter the whiteboard, navigate pages, and write explanations as real ink.</value></data>
+  <data name="Window_CaptureAndExplain" xml:space="preserve"><value>Read screen and explain</value></data>
+  <data name="Window_AnnotateAction" xml:space="preserve"><value>Auto annotate</value></data>
+  <data name="Window_WriteBoard" xml:space="preserve"><value>Write board note</value></data>
+  <data name="Window_EnterWhiteboard" xml:space="preserve"><value>Enter smart board</value></data>
+  <data name="Settings_Protocol" xml:space="preserve"><value>Protocol</value></data>
+  <data name="Settings_OpenAi" xml:space="preserve"><value>OpenAI compatible</value></data>
+  <data name="Settings_Anthropic" xml:space="preserve"><value>Anthropic Claude</value></data>
+  <data name="Window_Hide" xml:space="preserve"><value>Hide window</value></data>
+  <data name="Window_TransferToWhiteboard" xml:space="preserve"><value>Capture problem to whiteboard</value></data>
+  <data name="Window_TransferHint" xml:space="preserve"><value>Capture the current problem, enter the whiteboard, and insert it as a scalable problem image.</value></data>
+  <data name="Window_TransferFailed" xml:space="preserve"><value>Could not move the problem to the whiteboard</value></data>
+</root>

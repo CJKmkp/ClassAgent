@@ -1,0 +1,271 @@
+<Window x:Class="ClassAgent.Views.AgentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+        xmlns:ca="clr-namespace:ClassAgent.Resources"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ShowInTaskbar="True"
+        WindowStartupLocation="CenterScreen"
+        Width="980"
+        Height="720"
+        MinWidth="760"
+        MinHeight="520"
+        Title="{Binding WindowTitle, Source={x:Static ca:Localized.Current}}"
+        Background="{DynamicResource ApplicationPageBackgroundThemeBrush}"
+        Closing="Window_Closing">
+    <Window.Resources>
+        <Style x:Key="IconButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="8" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="7"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="AccentIconButtonStyle" TargetType="Button" BasedOn="{StaticResource IconButtonStyle}">
+            <Setter Property="Foreground" Value="{DynamicResource AccentFillColorPrimaryBrush}" />
+        </Style>
+    </Window.Resources>
+
+    <Border Background="{DynamicResource FloatingBarBackgroundBrush}"
+            BorderBrush="{DynamicResource FloatingBarBorderBrush}"
+            BorderThickness="1"
+            CornerRadius="14">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="42" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid x:Name="TitleBar" Grid.Row="0" Margin="10,4,8,0"
+                  MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding WindowTitle, Source={x:Static ca:Localized.Current}}"
+                           VerticalAlignment="Center" FontSize="14" FontWeight="SemiBold" />
+                <Button Grid.Column="1" Style="{StaticResource IconButtonStyle}"
+                        Click="CloseWindowButton_Click"
+                        ToolTip="{Binding Hide, Source={x:Static ca:Localized.Current}}">
+                    <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Clear}" />
+                </Button>
+            </Grid>
+            <ui:NavigationView x:Name="NavigationViewRoot" Grid.Row="1"
+                       PaneDisplayMode="Left"
+                       IsPaneOpen="True"
+                       IsPaneToggleButtonVisible="False"
+                       OpenPaneLength="230"
+                       IsBackButtonVisible="Collapsed"
+                       SelectionChanged="NavigationViewRoot_SelectionChanged">
+        <ui:NavigationView.MenuItems>
+            <ui:NavigationViewItem x:Name="ChatNavigationItem"
+                                    Content="{Binding ChatNav, Source={x:Static ca:Localized.Current}}">
+                <ui:NavigationViewItem.Icon>
+                    <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Message}" />
+                </ui:NavigationViewItem.Icon>
+            </ui:NavigationViewItem>
+            <ui:NavigationViewItem x:Name="HistoryNavigationItem"
+                                    Content="{Binding HistoryNav, Source={x:Static ca:Localized.Current}}">
+                <ui:NavigationViewItem.Icon>
+                    <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.History}" />
+                </ui:NavigationViewItem.Icon>
+            </ui:NavigationViewItem>
+            <ui:NavigationViewItem x:Name="SettingsNavigationItem"
+                                    Content="{Binding SettingsNav, Source={x:Static ca:Localized.Current}}">
+                <ui:NavigationViewItem.Icon>
+                    <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Settings}" />
+                </ui:NavigationViewItem.Icon>
+            </ui:NavigationViewItem>
+        </ui:NavigationView.MenuItems>
+
+        <Grid x:Name="ContentRoot" Margin="18,12,18,18">
+            <Grid x:Name="ChatPage">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="ModelText"
+                               Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                               VerticalAlignment="Center" />
+                    <CheckBox x:Name="IncludeScreenCheckBox" Grid.Column="1"
+                              Content="{Binding Capture, Source={x:Static ca:Localized.Current}}"
+                              Margin="12,0,10,0" VerticalAlignment="Center" />
+                    <Button x:Name="ClearButton" Grid.Column="2"
+                            Style="{StaticResource IconButtonStyle}"
+                            Click="ClearButton_Click"
+                            ToolTip="{Binding Clear, Source={x:Static ca:Localized.Current}}">
+                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Delete}" />
+                    </Button>
+                </Grid>
+
+                <ui:InfoBar x:Name="StatusInfoBar" Grid.Row="1" IsOpen="False"
+                            IsClosable="False" Margin="0,0,0,8" />
+
+                <Border Grid.Row="2"
+                        Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                        CornerRadius="12"
+                        Padding="8">
+                    <ScrollViewer x:Name="MessagesScroll"
+                                  VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled">
+                        <ItemsControl x:Name="MessageList">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="8,8,8,4">
+                                        <Grid.Style>
+                                            <Style TargetType="Grid">
+                                                <Setter Property="HorizontalAlignment" Value="Left" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsUser}" Value="True">
+                                                        <Setter Property="HorizontalAlignment" Value="Right" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Grid.Style>
+                                        <Border MaxWidth="680" Padding="14,10" CornerRadius="14"
+                                                Background="{DynamicResource SubtleFillColorSecondaryBrush}">
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Setter Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IsUser}" Value="True">
+                                                            <Setter Property="Background" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding Label}" FontWeight="SemiBold" Opacity="0.72" />
+                                                <TextBlock Text="{Binding Text}" TextWrapping="Wrap" Margin="0,4,0,0"
+                                                           FontSize="15" LineHeight="22" />
+                                                <TextBlock Text="{Binding Thinking}" TextWrapping="Wrap" Margin="0,6,0,0"
+                                                           Opacity="0.55" FontSize="12" />
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Border>
+
+                <Border Grid.Row="3" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                        CornerRadius="22" Padding="10,6" Margin="0,10,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="InputBox" Grid.Column="0"
+                                 Background="Transparent" BorderThickness="0"
+                                 MinHeight="40" MaxHeight="120"
+                                 AcceptsReturn="True" TextWrapping="Wrap"
+                                 VerticalContentAlignment="Center"
+                                 ToolTip="{Binding InputPlaceholder, Source={x:Static ca:Localized.Current}}"
+                                 KeyDown="InputBox_KeyDown" />
+                        <Button x:Name="StopButton" Grid.Column="1" Style="{StaticResource IconButtonStyle}"
+                                Visibility="Collapsed"
+                                Click="StopButton_Click"
+                                ToolTip="{Binding Stop, Source={x:Static ca:Localized.Current}}">
+                            <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Clear}" Foreground="#DC2626" />
+                        </Button>
+                        <Button x:Name="SendButton" Grid.Column="1" Style="{StaticResource AccentIconButtonStyle}"
+                                Click="SendButton_Click"
+                                ToolTip="{Binding Send, Source={x:Static ca:Localized.Current}}">
+                            <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Forward}" FontSize="17" />
+                        </Button>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Grid x:Name="HistoryPage" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding HistoryNav, Source={x:Static ca:Localized.Current}}"
+                               FontSize="24" FontWeight="SemiBold" />
+                    <Button Grid.Column="1" Style="{StaticResource IconButtonStyle}"
+                            Click="ClearHistoryButton_Click"
+                            ToolTip="{Binding ClearHistory, Source={x:Static ca:Localized.Current}}">
+                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Delete}" />
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBlock x:Name="HistoryEmptyText"
+                               Text="{Binding HistoryEmpty, Source={x:Static ca:Localized.Current}}"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Opacity="0.65" />
+                    <ui:ListView x:Name="HistoryList"
+                                 SelectionChanged="HistoryList_SelectionChanged"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ui:ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border Padding="12,10" Margin="0,0,0,8"
+                                        Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                                        CornerRadius="10">
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Title}" FontWeight="SemiBold" />
+                                        <TextBlock Text="{Binding Response}" TextWrapping="Wrap"
+                                                   MaxHeight="44" Opacity="0.68" Margin="0,4,0,0" />
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ui:ListView.ItemTemplate>
+                    </ui:ListView>
+                </Grid>
+            </Grid>
+
+            <Grid x:Name="SettingsPage" Visibility="Collapsed">
+                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled">
+                    <ContentControl x:Name="SettingsContent" />
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+            </ui:NavigationView>
+        </Grid>
+    </Border>
+</Window>

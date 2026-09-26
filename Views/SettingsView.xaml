@@ -1,0 +1,185 @@
+<UserControl x:Class="ClassAgent.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+             xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
+             xmlns:controls="clr-namespace:Ink_Canvas.Controls;assembly=InkCanvas.Controls"
+             xmlns:ca="clr-namespace:ClassAgent.Resources"
+             mc:Ignorable="d"
+             d:DesignHeight="680" d:DesignWidth="820">
+    <ikw:SimpleStackPanel Spacing="8" MaxWidth="900">
+        <ui:SettingsExpander Header="{Binding Provider, Source={x:Static ca:Localized.Current}}"
+                             IsExpanded="True">
+            <ui:SettingsExpander.Items>
+                <ui:SettingsCard Header="{Binding ProviderName, Source={x:Static ca:Localized.Current}}">
+                    <ui:SettingsCard.HeaderIcon>
+                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.People}" />
+                    </ui:SettingsCard.HeaderIcon>
+                    <TextBox x:Name="ProviderNameBox" MinWidth="240" />
+                </ui:SettingsCard>
+                <ui:SettingsCard Header="{Binding BaseUrl, Source={x:Static ca:Localized.Current}}">
+                    <ui:SettingsCard.HeaderIcon>
+                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Link}" />
+                    </ui:SettingsCard.HeaderIcon>
+                    <TextBox x:Name="BaseUrlBox" MinWidth="360" />
+                </ui:SettingsCard>
+                <ui:SettingsCard Header="{Binding ApiKey, Source={x:Static ca:Localized.Current}}">
+                    <ui:SettingsCard.HeaderIcon>
+                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Permissions}" />
+                    </ui:SettingsCard.HeaderIcon>
+                    <PasswordBox x:Name="ApiKeyBox" Width="260" MaxLength="0"
+                                 HorizontalAlignment="Right" />
+                </ui:SettingsCard>
+                <ui:SettingsCard Header="{Binding Model, Source={x:Static ca:Localized.Current}}">
+                    <ui:SettingsCard.HeaderIcon>
+                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.DeveloperTools}" />
+                    </ui:SettingsCard.HeaderIcon>
+                    <Grid Width="400" HorizontalAlignment="Right">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox x:Name="ModelCombo" Grid.Column="0"
+                                  IsEditable="True" HorizontalAlignment="Stretch" />
+                        <Button x:Name="FetchModelsButton" Grid.Column="1"
+                                Margin="8,0,0,0" Padding="10,5"
+                                Click="FetchModelsButton_Click"
+                                ToolTip="{Binding FetchModels, Source={x:Static ca:Localized.Current}}">
+                            <StackPanel Orientation="Horizontal">
+                                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Sync}" Margin="0,0,5,0" />
+                                <TextBlock Text="{Binding FetchModels, Source={x:Static ca:Localized.Current}}" />
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </ui:SettingsCard>
+                <ui:SettingsCard Header="{Binding Protocol, Source={x:Static ca:Localized.Current}}">
+                    <ui:SettingsCard.HeaderIcon>
+                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Settings}" />
+                    </ui:SettingsCard.HeaderIcon>
+                    <ComboBox x:Name="ProtocolCombo" SelectionChanged="ProtocolCombo_SelectionChanged">
+                        <ComboBoxItem Content="{Binding OpenAi, Source={x:Static ca:Localized.Current}}" Tag="OpenAiCompatible" />
+                        <ComboBoxItem Content="{Binding Anthropic, Source={x:Static ca:Localized.Current}}" Tag="Anthropic" />
+                    </ComboBox>
+                </ui:SettingsCard>
+            </ui:SettingsExpander.Items>
+        </ui:SettingsExpander>
+
+        <ui:SettingsCard Header="{Binding SystemPrompt, Source={x:Static ca:Localized.Current}}">
+            <ui:SettingsCard.HeaderIcon>
+                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Message}" />
+            </ui:SettingsCard.HeaderIcon>
+            <TextBox x:Name="SystemPromptBox" MinHeight="80" MaxHeight="180"
+                     AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+        </ui:SettingsCard>
+
+        <ui:SettingsExpander Header="{Binding PromptGuide, Source={x:Static ca:Localized.Current}}"
+                             Description="{Binding PromptGuideDescription, Source={x:Static ca:Localized.Current}}"
+                             IsExpanded="False">
+            <ui:SettingsExpander.Items>
+                <ui:SettingsCard Header="{Binding PromptExplain, Source={x:Static ca:Localized.Current}}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="0" Text="{Binding PromptExplainText, Source={x:Static ca:Localized.Current}, Mode=OneWay}"
+                                 IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
+                                 MinHeight="56" />
+                        <Button Grid.Column="1" Tag="PromptExplainText" Click="CopyPromptButton_Click"
+                                Margin="8,0,0,0" Padding="10,5"
+                                ToolTip="{Binding CopyPrompt, Source={x:Static ca:Localized.Current}}">
+                            <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Copy}" />
+                        </Button>
+                    </Grid>
+                </ui:SettingsCard>
+                <ui:SettingsCard Header="{Binding PromptAnnotate, Source={x:Static ca:Localized.Current}}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="0" Text="{Binding PromptAnnotateText, Source={x:Static ca:Localized.Current}, Mode=OneWay}"
+                                 IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
+                                 MinHeight="56" />
+                        <Button Grid.Column="1" Tag="PromptAnnotateText" Click="CopyPromptButton_Click"
+                                Margin="8,0,0,0" Padding="10,5"
+                                ToolTip="{Binding CopyPrompt, Source={x:Static ca:Localized.Current}}">
+                            <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Copy}" />
+                        </Button>
+                    </Grid>
+                </ui:SettingsCard>
+                <ui:SettingsCard Header="{Binding PromptBoard, Source={x:Static ca:Localized.Current}}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="0" Text="{Binding PromptBoardText, Source={x:Static ca:Localized.Current}, Mode=OneWay}"
+                                 IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
+                                 MinHeight="56" />
+                        <Button Grid.Column="1" Tag="PromptBoardText" Click="CopyPromptButton_Click"
+                                Margin="8,0,0,0" Padding="10,5"
+                                ToolTip="{Binding CopyPrompt, Source={x:Static ca:Localized.Current}}">
+                            <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Copy}" />
+                        </Button>
+                    </Grid>
+                </ui:SettingsCard>
+                <ui:SettingsCard Header="{Binding PromptTransfer, Source={x:Static ca:Localized.Current}}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="0" Text="{Binding PromptTransferText, Source={x:Static ca:Localized.Current}, Mode=OneWay}"
+                                 IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
+                                 MinHeight="56" />
+                        <Button Grid.Column="1" Tag="PromptTransferText" Click="CopyPromptButton_Click"
+                                Margin="8,0,0,0" Padding="10,5"
+                                ToolTip="{Binding CopyPrompt, Source={x:Static ca:Localized.Current}}">
+                            <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Copy}" />
+                        </Button>
+                    </Grid>
+                </ui:SettingsCard>
+            </ui:SettingsExpander.Items>
+        </ui:SettingsExpander>
+
+        <ui:SettingsCard Header="{Binding ConfirmMode, Source={x:Static ca:Localized.Current}}">
+            <ui:SettingsCard.HeaderIcon>
+                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Shield}" />
+            </ui:SettingsCard.HeaderIcon>
+            <ComboBox x:Name="ConfirmationCombo" SelectionChanged="ConfirmationCombo_SelectionChanged">
+                <ComboBoxItem Content="{Binding ConfirmAlways, Source={x:Static ca:Localized.Current}}" Tag="Always" />
+                <ComboBoxItem Content="{Binding ConfirmAuto, Source={x:Static ca:Localized.Current}}" Tag="Automatic" />
+            </ComboBox>
+        </ui:SettingsCard>
+
+        <controls:LabeledSettingsCard x:Name="VoiceCard"
+                                      Header="{Binding EnableVoice, Source={x:Static ca:Localized.Current}}"
+                                      Icon="{x:Static ui:SegoeFluentIcons.Message}"
+                                      IsOn="False"
+                                      SwitchName="EnableVoiceSwitch"
+                                      Toggled="VoiceCard_Toggled" />
+
+        <ui:SettingsCard Header="{Binding WakeWord, Source={x:Static ca:Localized.Current}}">
+            <ui:SettingsCard.HeaderIcon>
+                <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Message}" />
+            </ui:SettingsCard.HeaderIcon>
+            <TextBox x:Name="WakeWordBox" MinWidth="220" />
+        </ui:SettingsCard>
+
+        <Grid Margin="4,12,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="StatusText" VerticalAlignment="Center" />
+            <Button Grid.Column="1" Content="{Binding Test, Source={x:Static ca:Localized.Current}}"
+                    Click="TestButton_Click" Padding="16,7" Margin="8,0" />
+            <Button Grid.Column="2" Content="{Binding Save, Source={x:Static ca:Localized.Current}}"
+                    Click="SaveButton_Click" Padding="18,7" />
+        </Grid>
+    </ikw:SimpleStackPanel>
+</UserControl>

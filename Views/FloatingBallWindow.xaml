@@ -1,0 +1,41 @@
+<Window x:Class="ClassAgent.Views.FloatingBallWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ca="clr-namespace:ClassAgent.Resources"
+        xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ShowInTaskbar="False"
+        ShowActivated="False"
+        Topmost="True"
+        ResizeMode="NoResize"
+        Width="58"
+        Height="58"
+        SnapsToDevicePixels="True"
+        UseLayoutRounding="True">
+    <Border x:Name="RootBorder"
+            Background="{DynamicResource FloatingBarBackgroundBrush}"
+            BorderBrush="{DynamicResource FloatingBarBorderBrush}"
+            BorderThickness="1"
+            CornerRadius="29"
+            Cursor="Hand"
+            MouseLeftButtonDown="RootBorder_MouseLeftButtonDown"
+            MouseMove="RootBorder_MouseMove"
+            MouseLeftButtonUp="RootBorder_MouseLeftButtonUp"
+            ToolTip="{Binding FloatingTooltip, Source={x:Static ca:Localized.Current}}">
+        <Border.Effect>
+            <DropShadowEffect Color="Black" BlurRadius="8" ShadowDepth="2" Opacity="0.35" />
+        </Border.Effect>
+        <Grid>
+            <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Message}"
+                         FontSize="28"
+                         Foreground="{DynamicResource FloatingBarForegroundBrush}"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center" />
+        </Grid>
+    </Border>
+</Window>

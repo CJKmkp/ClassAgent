@@ -1,0 +1,21 @@
+{
+  "Id": "com.icc.class-agent",
+  "Name": "ClassAgent",
+  "Version": "0.1.0",
+  "Description": "面向课堂的 AI 助手：读取屏幕、自动讲题、结构化批注、辅助板书和智慧白板。",
+  "Author": "ICC-CE",
+  "EntranceAssembly": "ClassAgent.dll",
+  "Icon": "icon.png",
+  "ApiVersion": "1.13.0",
+  "MinHostVersion": "1.13.0",
+  "Permissions": [
+    "Network",
+    "Canvas",
+    "ScreenCapture",
+    "UIAutomation",
+    "Microphone",
+    "Hotkeys",
+    "Settings"
+  ],
+  "Dependencies": []
+}

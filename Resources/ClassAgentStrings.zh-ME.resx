@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0</value></resheader>
+  <data name="Plugin_Name" xml:space="preserve"><value>ClassAgent</value></data>
+  <data name="Plugin_Description" xml:space="preserve"><value>課堂 AI 助手：講題、批註與輔助板書</value></data>
+  <data name="Toolbar_Name" xml:space="preserve"><value>ClassAgent</value></data>
+  <data name="Toolbar_Description" xml:space="preserve"><value>開啟課堂 AI 助手</value></data>
+  <data name="Window_Title" xml:space="preserve"><value>ClassAgent 課堂助手</value></data>
+  <data name="Window_InputPlaceholder" xml:space="preserve"><value>輸入問題，或點擊螢幕讀取內容</value></data>
+  <data name="Window_Send" xml:space="preserve"><value>發送</value></data>
+  <data name="Window_Stop" xml:space="preserve"><value>停止</value></data>
+  <data name="Window_Clear" xml:space="preserve"><value>清空</value></data>
+  <data name="Window_Capture" xml:space="preserve"><value>讀取螢幕</value></data>
+  <data name="Window_Explain" xml:space="preserve"><value>自動講題</value></data>
+  <data name="Window_Annotate" xml:space="preserve"><value>自動批註</value></data>
+  <data name="Window_WriteInk" xml:space="preserve"><value>寫入墨跡</value></data>
+  <data name="Window_Settings" xml:space="preserve"><value>設定</value></data>
+  <data name="Window_Ready" xml:space="preserve"><value>就緒</value></data>
+  <data name="Window_Thinking" xml:space="preserve"><value>思考中</value></data>
+  <data name="Window_Streaming" xml:space="preserve"><value>生成中</value></data>
+  <data name="Window_ConfirmTitle" xml:space="preserve"><value>確認執行</value></data>
+  <data name="Window_ConfirmAnnotation" xml:space="preserve"><value>ClassAgent 將在畫布上寫入 {0} 筆墨跡，是否繼續？</value></data>
+  <data name="Window_Inserted" xml:space="preserve"><value>已寫入畫布</value></data>
+  <data name="Window_Failed" xml:space="preserve"><value>操作失敗：{0}</value></data>
+  <data name="Window_NoProvider" xml:space="preserve"><value>請先在設定中配置模型服務</value></data>
+  <data name="Settings_Title" xml:space="preserve"><value>ClassAgent 設定</value></data>
+  <data name="Settings_Provider" xml:space="preserve"><value>模型服務</value></data>
+  <data name="Settings_ProviderName" xml:space="preserve"><value>服務名稱</value></data>
+  <data name="Settings_BaseUrl" xml:space="preserve"><value>介面地址</value></data>
+  <data name="Settings_ApiKey" xml:space="preserve"><value>API Key</value></data>
+  <data name="Settings_Model" xml:space="preserve"><value>模型</value></data>
+  <data name="Settings_FetchModels" xml:space="preserve"><value>拉取模型</value></data>
+  <data name="Settings_FetchingModels" xml:space="preserve"><value>正在拉取模型清單…</value></data>
+  <data name="Settings_ModelsLoaded" xml:space="preserve"><value>已取得 {0} 個模型；請選擇或手動輸入後儲存。</value></data>
+  <data name="Settings_NoModels" xml:space="preserve"><value>介面沒有返回模型清單，仍可手動輸入模型名稱。</value></data>
+  <data name="Settings_FetchFailed" xml:space="preserve"><value>拉取模型失敗：{0}</value></data>
+  <data name="Settings_EnterBaseUrl" xml:space="preserve"><value>請先填寫介面地址。</value></data>
+  <data name="Settings_EnterApiKey" xml:space="preserve"><value>請先填寫 API Key。</value></data>
+  <data name="Settings_SystemPrompt" xml:space="preserve"><value>課堂助手提示詞</value></data>
+  <data name="Settings_PromptGuide" xml:space="preserve"><value>提示詞指南</value></data>
+  <data name="Settings_PromptGuideDescription" xml:space="preserve"><value>可複製的課堂任務範本；{screen} 表示目前螢幕，{question} 表示題目或問題。</value></data>
+  <data name="Settings_PromptExplain" xml:space="preserve"><value>自動講題</value></data>
+  <data name="Settings_PromptAnnotate" xml:space="preserve"><value>自動批註</value></data>
+  <data name="Settings_PromptBoard" xml:space="preserve"><value>輔助板書</value></data>
+  <data name="Settings_PromptTransfer" xml:space="preserve"><value>題目遷移白板</value></data>
+  <data name="Settings_CopyPrompt" xml:space="preserve"><value>複製範本</value></data>
+  <data name="Settings_PromptExplainText" xml:space="preserve"><value>請讀取 {screen} 中的題目，先複述已識別的條件，再用清晰、可驗證的步驟講解解法；如果內容不清晰，請指出需要補充的區域。</value></data>
+  <data name="Settings_PromptAnnotateText" xml:space="preserve"><value>請讀取 {screen}，識別需要強調的關鍵步驟，只生成結構化批註計畫（矩形、箭頭、底線或高亮），執行前等待我確認。</value></data>
+  <data name="Settings_PromptBoardText" xml:space="preserve"><value>請將 {question} 整理為適合課堂板書的標題、步驟、公式和結論，並使用標準宋體以真實墨跡寫入畫布。</value></data>
+  <data name="Settings_PromptTransferText" xml:space="preserve"><value>請截取目前題目並遷移到白板新頁，保持題目原圖可縮放；不要先覆蓋已有白板內容。</value></data>
+  <data name="Settings_ConfirmMode" xml:space="preserve"><value>畫布變更確認</value></data>
+  <data name="Settings_ConfirmAlways" xml:space="preserve"><value>每次確認</value></data>
+  <data name="Settings_ConfirmAuto" xml:space="preserve"><value>自動執行</value></data>
+  <data name="Settings_Voice" xml:space="preserve"><value>語音喚醒</value></data>
+  <data name="Settings_WakeWord" xml:space="preserve"><value>自訂喚醒詞</value></data>
+  <data name="Settings_EnableVoice" xml:space="preserve"><value>啟用 Windows 語音喚醒</value></data>
+  <data name="Settings_Save" xml:space="preserve"><value>儲存</value></data>
+  <data name="Settings_Test" xml:space="preserve"><value>測試連線</value></data>
+  <data name="Settings_Saved" xml:space="preserve"><value>已儲存</value></data>
+  <data name="Floating_Open" xml:space="preserve"><value>開啟 ClassAgent</value></data>
+  <data name="Floating_Hide" xml:space="preserve"><value>隱藏懸浮球</value></data>
+  <data name="Floating_Voice" xml:space="preserve"><value>語音喚醒</value></data>
+  <data name="Floating_Tooltip" xml:space="preserve"><value>ClassAgent 課堂助手</value></data>
+  <data name="Tool_Pen" xml:space="preserve"><value>畫筆</value></data>
+  <data name="Tool_Select" xml:space="preserve"><value>選取</value></data>
+  <data name="Tool_Eraser" xml:space="preserve"><value>橡皮擦</value></data>
+  <data name="Tool_Shape" xml:space="preserve"><value>形狀</value></data>
+  <data name="Tool_Roaming" xml:space="preserve"><value>漫遊</value></data>
+  <data name="Voice_Off" xml:space="preserve"><value>語音已關閉</value></data>
+  <data name="Voice_Listening" xml:space="preserve"><value>正在等待喚醒詞</value></data>
+  <data name="Voice_Unavailable" xml:space="preserve"><value>Windows 語音辨識不可用</value></data>
+  <data name="Window_ChatNav" xml:space="preserve"><value>對話</value></data>
+  <data name="Window_HistoryNav" xml:space="preserve"><value>聊天歷史記錄</value></data>
+  <data name="Window_HistoryEmpty" xml:space="preserve"><value>還沒有聊天歷史記錄</value></data>
+  <data name="Window_ClearHistory" xml:space="preserve"><value>清空歷史</value></data>
+  <data name="Window_ScreenNav" xml:space="preserve"><value>螢幕與批註</value></data>
+  <data name="Window_BoardNav" xml:space="preserve"><value>智慧白板</value></data>
+  <data name="Window_SettingsNav" xml:space="preserve"><value>設定</value></data>
+  <data name="Window_ContextTitle" xml:space="preserve"><value>課堂上下文</value></data>
+  <data name="Window_ScreenHint" xml:space="preserve"><value>讀取目前螢幕並交給視覺模型分析，可生成講題或批註計畫。</value></data>
+  <data name="Window_BoardHint" xml:space="preserve"><value>進入白板、翻頁，並將講解內容以墨跡寫入畫布。</value></data>
+  <data name="Window_CaptureAndExplain" xml:space="preserve"><value>讀取螢幕並講題</value></data>
+  <data name="Window_AnnotateAction" xml:space="preserve"><value>自動批註</value></data>
+  <data name="Window_WriteBoard" xml:space="preserve"><value>寫入板書</value></data>
+  <data name="Window_EnterWhiteboard" xml:space="preserve"><value>進入智慧白板</value></data>
+  <data name="Settings_Protocol" xml:space="preserve"><value>介面協議</value></data>
+  <data name="Settings_OpenAi" xml:space="preserve"><value>OpenAI 相容</value></data>
+  <data name="Settings_Anthropic" xml:space="preserve"><value>Anthropic Claude</value></data>
+  <data name="Window_Hide" xml:space="preserve"><value>隱藏視窗</value></data>
+  <data name="Window_TransferToWhiteboard" xml:space="preserve"><value>截取題目並遷移到白板</value></data>
+  <data name="Window_TransferHint" xml:space="preserve"><value>自動截取目前題目，進入白板並插入為可縮放的題目圖片。</value></data>
+  <data name="Window_TransferFailed" xml:space="preserve"><value>題目遷移到白板失敗</value></data>
+</root>

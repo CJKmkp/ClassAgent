@@ -1,0 +1,24 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore: [ '**.md', 'LICENSE' ]
+  pull_request:
+    branches: [ main ]
+    paths-ignore: [ '**.md', 'LICENSE' ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    uses: ./.github/workflows/plugin-build-net10.yml
+    with:
+      project: ClassAgent.csproj
+      plugin_id: com.icc.class-agent
+      plugin_name: ClassAgent
+      plugin_description: '课堂 AI 助手：读取屏幕、自动讲题、结构化批注、辅助板书和智慧白板。'
+      auto_release: true
+    secrets: inherit
