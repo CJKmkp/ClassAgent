@@ -207,14 +207,6 @@ namespace ClassAgent.Views
             SetStatus(success ? Strings.Get("Window_Inserted") : Strings.Get("Window_TransferFailed"));
         }
 
-        private void TitleBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed) DragMove();
-        }
-
-        private void CloseWindowButton_Click(object sender, RoutedEventArgs e)
-            => Hide();
-
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             _lines.Clear();

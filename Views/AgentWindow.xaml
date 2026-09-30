@@ -3,8 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
         xmlns:ca="clr-namespace:ClassAgent.Resources"
-        WindowStyle="None"
-        AllowsTransparency="True"
+        ui:ThemeManager.IsThemeAware="True"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        ui:WindowHelper.SystemBackdropType="None"
+        ui:WindowHelper.CornerStyle="DoNotRound"
+        ui:TitleBar.Height="42"
+        ui:TitleBar.Foreground="{DynamicResource FloatingBarForegroundBrush}"
         ShowInTaskbar="True"
         WindowStartupLocation="CenterScreen"
         Width="980"
@@ -12,7 +16,7 @@
         MinWidth="760"
         MinHeight="520"
         Title="{Binding WindowTitle, Source={x:Static ca:Localized.Current}}"
-        Background="{DynamicResource ApplicationPageBackgroundThemeBrush}"
+        Background="{DynamicResource FloatingBarBackgroundBrush}"
         Closing="Window_Closing">
     <Window.Resources>
         <Style x:Key="IconButtonStyle" TargetType="Button">
@@ -48,30 +52,7 @@
         </Style>
     </Window.Resources>
 
-    <Border Background="{DynamicResource FloatingBarBackgroundBrush}"
-            BorderBrush="{DynamicResource FloatingBarBorderBrush}"
-            BorderThickness="1"
-            SnapsToDevicePixels="True">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="42" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid x:Name="TitleBar" Grid.Row="0" Margin="10,4,8,0"
-                  MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="{Binding WindowTitle, Source={x:Static ca:Localized.Current}}"
-                           VerticalAlignment="Center" FontSize="14" FontWeight="SemiBold" />
-                <Button Grid.Column="1" Style="{StaticResource IconButtonStyle}"
-                        Click="CloseWindowButton_Click"
-                        ToolTip="{Binding Hide, Source={x:Static ca:Localized.Current}}">
-                    <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Clear}" />
-                </Button>
-            </Grid>
-            <ui:NavigationView x:Name="NavigationViewRoot" Grid.Row="1"
+    <ui:NavigationView x:Name="NavigationViewRoot"
                        PaneDisplayMode="Left"
                        IsPaneOpen="True"
                        IsPaneToggleButtonVisible="False"
@@ -265,7 +246,5 @@
                 </ScrollViewer>
             </Grid>
         </Grid>
-            </ui:NavigationView>
-        </Grid>
-    </Border>
+    </ui:NavigationView>
 </Window>
