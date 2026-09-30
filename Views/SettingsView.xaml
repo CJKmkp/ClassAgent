@@ -70,7 +70,7 @@
             <ui:SettingsCard.HeaderIcon>
                 <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Message}" />
             </ui:SettingsCard.HeaderIcon>
-            <TextBox x:Name="SystemPromptBox" MinHeight="80" MaxHeight="180"
+            <TextBox x:Name="SystemPromptBox" MinHeight="80" MaxHeight="180" MaxWidth="420"
                      AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
         </ui:SettingsCard>
 
@@ -86,7 +86,7 @@
                         </Grid.ColumnDefinitions>
                         <TextBox Grid.Column="0" Text="{Binding PromptExplainText, Source={x:Static ca:Localized.Current}, Mode=OneWay}"
                                  IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
-                                 MinHeight="56" />
+                                 MinHeight="56" MaxWidth="420" />
                         <Button Grid.Column="1" Tag="PromptExplainText" Click="CopyPromptButton_Click"
                                 Margin="8,0,0,0" Padding="10,5"
                                 ToolTip="{Binding CopyPrompt, Source={x:Static ca:Localized.Current}}">
@@ -102,7 +102,7 @@
                         </Grid.ColumnDefinitions>
                         <TextBox Grid.Column="0" Text="{Binding PromptAnnotateText, Source={x:Static ca:Localized.Current}, Mode=OneWay}"
                                  IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
-                                 MinHeight="56" />
+                                 MinHeight="56" MaxWidth="420" />
                         <Button Grid.Column="1" Tag="PromptAnnotateText" Click="CopyPromptButton_Click"
                                 Margin="8,0,0,0" Padding="10,5"
                                 ToolTip="{Binding CopyPrompt, Source={x:Static ca:Localized.Current}}">
@@ -118,7 +118,7 @@
                         </Grid.ColumnDefinitions>
                         <TextBox Grid.Column="0" Text="{Binding PromptBoardText, Source={x:Static ca:Localized.Current}, Mode=OneWay}"
                                  IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
-                                 MinHeight="56" />
+                                 MinHeight="56" MaxWidth="420" />
                         <Button Grid.Column="1" Tag="PromptBoardText" Click="CopyPromptButton_Click"
                                 Margin="8,0,0,0" Padding="10,5"
                                 ToolTip="{Binding CopyPrompt, Source={x:Static ca:Localized.Current}}">
@@ -134,7 +134,7 @@
                         </Grid.ColumnDefinitions>
                         <TextBox Grid.Column="0" Text="{Binding PromptTransferText, Source={x:Static ca:Localized.Current}, Mode=OneWay}"
                                  IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
-                                 MinHeight="56" />
+                                 MinHeight="56" MaxWidth="420" />
                         <Button Grid.Column="1" Tag="PromptTransferText" Click="CopyPromptButton_Click"
                                 Margin="8,0,0,0" Padding="10,5"
                                 ToolTip="{Binding CopyPrompt, Source={x:Static ca:Localized.Current}}">
